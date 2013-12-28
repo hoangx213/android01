@@ -9,14 +9,21 @@
     tools:context=".MainActivity" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/symInpEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="154dp"
-        android:ems="10" >
+        android:layout_marginTop="21dp"
+        android:ems="10" />
 
-        <requestFocus />
-    </EditText>
+    <ListView
+        android:id="@+id/symListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/symInpEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" >
+    </ListView>
 
 </RelativeLayout>
