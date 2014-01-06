@@ -2,21 +2,24 @@ package de.hx.ebmapp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -25,6 +28,7 @@ public class MainActivity extends Activity {
 	HashMap<String, Integer> symMap;
 	Helper helper = new Helper();
 	String symUrl = "http://defaultsym.hydaras.de/api/mainsymptoms/";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,9 @@ public class MainActivity extends Activity {
 		symInputView = (EditText) findViewById(R.id.symInpEditText);
 		sympListView = (ListView) findViewById(R.id.symListView);
 
+		// AsyncPOSTRequest test = new AsyncPOSTRequest();
+		// test.execute(postSymUrl, "37");
+		
 		symInputView.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -73,10 +80,24 @@ public class MainActivity extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				sympListView.setAdapter(new ArrayAdapter<String>(
 						getApplicationContext(), R.layout.sym_text_view,
 						symList));
+			}
+		});
+
+		sympListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this, AdditionalSympActivity.class);
+				TextView sympTextView = (TextView)view;
+				int sympId = symMap.get(sympTextView.getText());
+				intent.putExtra("ID", sympId);
+				startActivity(intent);
 			}
 		});
 
