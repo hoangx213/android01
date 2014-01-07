@@ -16,7 +16,7 @@ public class Helper {
 	public HashMap<String,Integer> renderSymMap(JSONObject jObj){
 		HashMap<String,Integer> result = new HashMap<String,Integer>();
 		try {
-		Iterator keys = jObj.keys();
+		Iterator<String> keys = jObj.keys();
 		while(keys.hasNext()){
 			String key = (String) keys.next();
 			

@@ -4,24 +4,56 @@
     android:layout_height="match_parent" >
 
     <RadioGroup
-        android:id="@+id/radioGroup1"
+        android:id="@+id/sexRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp" >
 
         <RadioButton
-            android:id="@+id/radio0"
+            android:id="@+id/femaleRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="RadioButton" />
+            android:text="weiblich" />
 
         <RadioButton
-            android:id="@+id/radio1"
+            android:id="@+id/maleRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="männlich" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/ageEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sexRadioGroup"
+        android:layout_alignRight="@+id/sexRadioGroup"
+        android:layout_below="@+id/sexRadioGroup"
+        android:ems="10"
+        android:inputType="number"
+        android:text="40" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ageEditText"
+        android:layout_toLeftOf="@+id/ageEditText"
+        android:text="Alter"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Weiter" />
 
 </RelativeLayout>

@@ -24,14 +24,20 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080006;
-        public static final int action_settings=0x7f080009;
-        public static final int addSympListView=0x7f080005;
-        public static final int addSympTextView=0x7f080007;
-        public static final int radio0=0x7f080003;
-        public static final int radio1=0x7f080004;
-        public static final int radio2=0x7f080008;
-        public static final int radioGroup1=0x7f080002;
+        public static final int LinearLayout1=0x7f080009;
+        public static final int action_settings=0x7f08000f;
+        public static final int addSympListView=0x7f080008;
+        public static final int addSympTextView=0x7f08000a;
+        public static final int ageEditText=0x7f080005;
+        public static final int ageTextView=0x7f080006;
+        public static final int femaleRadio=0x7f080003;
+        public static final int maleRadio=0x7f080004;
+        public static final int nextButton=0x7f080007;
+        public static final int selectRadioFalse=0x7f08000e;
+        public static final int selectRadioGroup=0x7f08000b;
+        public static final int selectRadioNull=0x7f08000c;
+        public static final int selectRadioTrue=0x7f08000d;
+        public static final int sexRadioGroup=0x7f080002;
         public static final int symInpEditText=0x7f080000;
         public static final int symListView=0x7f080001;
     }
