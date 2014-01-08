@@ -11,22 +11,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class AdditionalSympActivity extends Activity {
+public class AdditionalSympActivity extends Activity implements OnClickListener{
 
 	String addSympUrl = "http://defaultsym.hydaras.de/api/additionalsymptoms";
 	Helper helper = new Helper();
 	HashMap<String, Integer> addSympMap = new HashMap<String, Integer>();
 	ListView addSympListView;
+	Button nextPageButton;
 
 	int sympID;
 	String age;
 	int sex;
+	HashMap<String, Boolean> symptoms;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -34,6 +38,8 @@ public class AdditionalSympActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.additional_symp);
 		addSympListView = (ListView) findViewById(R.id.addSympListView);
+		nextPageButton = (Button)findViewById(R.id.nextToDiseasesButton);
+		symptoms = new HashMap<String,Boolean>();
 		Intent intent = getIntent();
 		sympID = intent.getIntExtra("SymptomID", 0);
 		age = intent.getStringExtra("Age");
@@ -62,7 +68,7 @@ public class AdditionalSympActivity extends Activity {
 		}
 
 		addSympListView.setAdapter(new AddSympListViewAdapter(addSympList));
-
+		nextPageButton.setOnClickListener(this);
 	}
 
 	protected class AddSympListViewAdapter extends
@@ -101,6 +107,17 @@ public class AdditionalSympActivity extends Activity {
 						Integer myPosition = (Integer) group.getTag();
 						AddSympRowModel addSymp = addSympListOfAdapter.get(myPosition);
 						addSymp.checkedID = checkedId;
+						switch(checkedId){
+						case R.id.selectRadioTrue : 
+							symptoms.put(addSymp.addSympID, true);
+							break;
+						case R.id.selectRadioFalse : 
+							symptoms.put(addSymp.addSympID, false);
+							break;
+						default : 
+							symptoms.remove(addSymp.addSympID); 
+							break;
+						}
 					}
 				});
 				
@@ -125,6 +142,16 @@ public class AdditionalSympActivity extends Activity {
 		public String toString(){
 			return name;
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent = new Intent(this, DiseasesActivity.class);
+		intent.putExtra("Symptoms", symptoms);
+		intent.putExtra("Age", age);
+		intent.putExtra("Sex", sex);
+		intent.putExtra("SymptomID", sympID);
+		startActivity(intent);
 	}
 
 }

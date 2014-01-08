@@ -9,17 +9,18 @@
         android:id="@+id/addSympTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="5"
         android:padding="10dp"
         android:text="TextView ala bala olo bolo ale bele"
         android:textSize="16sp" />
 
     <RadioGroup
         android:id="@+id/selectRadioGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:padding="5dp" 
+        android:layout_weight="3">
 
         <RadioButton
             android:id="@+id/selectRadioNull"

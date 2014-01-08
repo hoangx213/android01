@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/diseasesHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gesamte Wahrscheinlichkeit: "
+                />
+
+            <TextView
+                android:id="@+id/totalReliability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2E2E2E"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/column_header1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Wahrscheinlichkeit"
+                android:textColor="#E6E6E6" />
+
+            <TextView
+                android:id="@+id/column_header2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Symtomname"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#E6E6E6" />
+
+            <TextView
+                android:id="@+id/column_header3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gewissheit"
+                android:textColor="#E6E6E6" />
+
+            <TextView
+                android:id="@+id/column_header4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Todesrisiko"
+                android:textColor="#E6E6E6" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/deseasesListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diseasesHeader" >
+    </ListView>
+
+</RelativeLayout>
