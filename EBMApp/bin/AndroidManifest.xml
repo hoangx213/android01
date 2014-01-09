@@ -38,6 +38,15 @@
             android:name="DiseasesActivity"
             android:label="Diagnose" >
         </activity>
+        <activity
+            android:name="TherapyActivity"
+            android:label="Therapie" >
+        </activity>
+        <activity
+            android:name="EvidenzDataActivity"
+            android:label="Evidenz-Daten" >
+        </activity>
+        <activity android:name="WebViewActivity"></activity>
     </application>
 
 </manifest>

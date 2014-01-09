@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/captionTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#2E2E2E"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="ICD-Code und Name der Krankheit"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#E6E6E6" />
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/diseaseCodeTherapyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:text="E03" />
+
+        <TextView
+            android:id="@+id/diseaseNameTherapyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Sonstige Hypothyreose" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/toEvidenzDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Evidenz-Daten dieser Krankheit einsehen" />
+
+    <TextView
+        android:id="@+id/captionTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#2E2E2E"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Therapie Empfehlung"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#E6E6E6" />
+
+    <TextView
+        android:id="@+id/sourceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:clickable="true"
+        android:textColor="#2E64FE"
+        android:text="Empfohlene Therapie" />
+
+    <TextView
+        android:id="@+id/googleSearchTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:clickable="true"
+        android:textColor="#2E64FE"
+        android:text="Therapie Empfehlungen über Google suchen" />
+
+</TableLayout>

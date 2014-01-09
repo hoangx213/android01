@@ -25,20 +25,30 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f08000a;
-        public static final int action_settings=0x7f08001b;
+        public static final int TableLayout1=0x7f080020;
+        public static final int action_settings=0x7f080029;
         public static final int addSympListView=0x7f080008;
         public static final int addSympTextView=0x7f08000b;
         public static final int ageEditText=0x7f080005;
         public static final int ageTextView=0x7f080006;
-        public static final int column_header1=0x7f080016;
-        public static final int column_header2=0x7f080017;
-        public static final int column_header3=0x7f080018;
-        public static final int column_header4=0x7f080019;
+        public static final int captionTextView1=0x7f080021;
+        public static final int captionTextView2=0x7f080026;
+        public static final int column_header1=0x7f080017;
+        public static final int column_header2=0x7f080018;
+        public static final int column_header3=0x7f080019;
+        public static final int column_header4=0x7f08001a;
         public static final int deathRateTextView=0x7f080013;
-        public static final int deseasesListView=0x7f08001a;
+        public static final int deseasesListView=0x7f08001b;
+        public static final int diseaseCodeTherapyTextView=0x7f080023;
         public static final int diseaseNameTextView=0x7f080011;
-        public static final int diseasesHeader=0x7f080014;
+        public static final int diseaseNameTherapyTextView=0x7f080024;
+        public static final int diseasesHeader=0x7f080015;
+        public static final int evidenzDataCaptionTextView=0x7f08001c;
+        public static final int evidenzDataPercentageTextView=0x7f08001f;
+        public static final int evidenzDataSympNameTextView=0x7f08001e;
+        public static final int evidenzDataSymptomListView=0x7f08001d;
         public static final int femaleRadio=0x7f080003;
+        public static final int googleSearchTextView=0x7f080028;
         public static final int maleRadio=0x7f080004;
         public static final int nextButton=0x7f080007;
         public static final int nextToDiseasesButton=0x7f080009;
@@ -49,9 +59,13 @@ public final class R {
         public static final int selectRadioNull=0x7f08000d;
         public static final int selectRadioTrue=0x7f08000e;
         public static final int sexRadioGroup=0x7f080002;
+        public static final int sourceTextView=0x7f080027;
         public static final int symInpEditText=0x7f080000;
         public static final int symListView=0x7f080001;
-        public static final int totalReliability=0x7f080015;
+        public static final int tableRow1=0x7f080022;
+        public static final int toEvidenzDateButton=0x7f080025;
+        public static final int totalReliability=0x7f080016;
+        public static final int webView=0x7f080014;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -59,8 +73,12 @@ public final class R {
         public static final int additional_symp=0x7f030002;
         public static final int additional_symp_listview_elem=0x7f030003;
         public static final int disease_listview_elem=0x7f030004;
-        public static final int diseases_page=0x7f030005;
-        public static final int sym_text_view=0x7f030006;
+        public static final int disease_web_page=0x7f030005;
+        public static final int diseases_page=0x7f030006;
+        public static final int evidenz_data_page=0x7f030007;
+        public static final int sym_text_view=0x7f030008;
+        public static final int symptom_listview_elem=0x7f030009;
+        public static final int therapy_page=0x7f03000a;
     }
     public static final class menu {
         public static final int main=0x7f070000;

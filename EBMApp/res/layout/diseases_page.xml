@@ -52,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:text="Symtomname"
+                android:text="Krankheit"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#E6E6E6" />
 

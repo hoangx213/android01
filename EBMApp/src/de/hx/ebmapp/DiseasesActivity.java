@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,7 +30,7 @@ public class DiseasesActivity extends Activity {
 	ListView deseasesListView;
 	TextView totalReliabilityTextView;
 	
-	ArrayList<DiseaseModel> diseasesArray;
+	ArrayList<DiseaseModel> diseasesList;
 	String totalReliability;
 
 	/** Called when the activity is first created. */
@@ -70,8 +72,23 @@ public class DiseasesActivity extends Activity {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		diseasesArray = helper.renderDiseasesList(jObj);
-		deseasesListView.setAdapter(new DiseasesListAdapter(diseasesArray));
+		diseasesList = helper.renderDiseasesList(jObj);
+		deseasesListView.setAdapter(new DiseasesListAdapter(diseasesList));
+		
+		deseasesListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				Intent intent = new Intent(DiseasesActivity.this, TherapyActivity.class);
+				DiseaseModel clickedDisease = diseasesList.get(position);
+				intent.putExtra("Treatment", clickedDisease.treatment);
+				intent.putParcelableArrayListExtra("Symptoms", clickedDisease.symptomsArray);
+				intent.putExtra("Name", clickedDisease.name);
+				intent.putExtra("Code", clickedDisease.code);
+				startActivity(intent);
+			}
+		});
 	}
 
 	class DiseasesListAdapter extends ArrayAdapter<DiseaseModel> {

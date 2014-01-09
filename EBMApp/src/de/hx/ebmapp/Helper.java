@@ -72,10 +72,23 @@ public class Helper {
 			diseasesArray = jObj.getJSONArray("Diseases");
 			for(int i=0;i<diseasesArray.length();i++){
 				JSONObject thisJObj = diseasesArray.getJSONObject(i);
+				JSONArray thisJArray = thisJObj.getJSONArray("Symptoms");
+				ArrayList<SymptomModel> symptomsArray = new ArrayList<SymptomModel>();
+				for(int j=0;j<thisJArray.length();j++){
+					JSONObject thisSymptomJObj = thisJArray.getJSONObject(j);
+					symptomsArray.add(new SymptomModel(thisSymptomJObj.getString("Name"), 
+							thisSymptomJObj.getString("Percentage"), thisSymptomJObj.getString("PercentageLong"), 
+							thisSymptomJObj.getString("Source"), thisSymptomJObj.getString("URL")));
+				}
+				JSONArray treatmentJArray = thisJObj.getJSONArray("Treatments");
+				JSONObject treatmenJtObject = treatmentJArray.getJSONObject(0);
+				TreatmentModel thisTreatment = new TreatmentModel(treatmenJtObject.getString("Description"),
+						treatmenJtObject.getString("Name"), treatmenJtObject.getString("Source"), 
+						treatmenJtObject.getString("SourceClean"));
 				result.add(new DiseaseModel(thisJObj.getString("DeathRate"), 
 						thisJObj.getString("ICD10"), thisJObj.getInt("ID"),
 						thisJObj.getString("Name"), thisJObj.getString("Probability"),
-						thisJObj.getString("Reliability")));
+						thisJObj.getString("Reliability"), symptomsArray, thisTreatment));
 			}
 		}
 		catch(JSONException e){
