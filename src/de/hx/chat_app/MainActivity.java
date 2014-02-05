@@ -5,14 +5,12 @@ import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,9 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener, IOCallback {
 
 	EditText messageEditText;
 	Button sendButton;
@@ -30,6 +27,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	ListView messageListView;
 	ArrayList<String> messageList;
 	ArrayAdapter<String> messageListAdapter;
+	boolean flag = false;
+	Chat chat;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		messageEditText = (EditText) findViewById(R.id.messageEditText);
 		sendButton = (Button) findViewById(R.id.sendButton);
 
-		socket = getSocket();
-
 		sendButton.setOnClickListener(this);
 		messageListView = (ListView) findViewById(R.id.messageListView);
 
@@ -48,6 +45,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		messageListAdapter = new ArrayAdapter<String>(getApplicationContext(),
 				R.layout.sym_text_view, messageList);
 		messageListView.setAdapter(messageListAdapter);
+		startChat();
 	}
 
 	@Override
@@ -57,84 +55,54 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
-	private SocketIO getSocket() {
-		SocketIO thisSocket = null;
-		try {
-			thisSocket = new SocketIO("http://192.168.4.100:3000/");
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void startChat(){
+		chat = new Chat(this, messageListAdapter);
+		chat.start();
+	}
+	
+	@Override
+	public void onClick(View v) {
+		chat.sendMessage(messageEditText.getText().toString());
+		messageEditText.setText("");
+	}
+
+
+	@Override
+	public void on(String event, IOAcknowledge ack, Object... args) {
+		// TODO Auto-generated method stub
+		if ("chat".equals(event) && args.length > 0) {
+			messageList.add(args[0].toString());
+			chat.updateMessageList(this);
 		}
-		thisSocket.connect(new IOCallback() {
-
-			@Override
-			public void on(String event, IOAcknowledge ack, Object... args) {
-				if ("chat".equals(event) && args.length > 0) {
-					messageList.add(args[0].toString());
-					messageListAdapter.notifyDataSetChanged();
-					messageListView.setSelection(messageListView.getCount() - 1);
-				}
-			}
-
-			@Override
-			public void onMessage(JSONObject json, IOAcknowledge ack) {
-			}
-
-			@Override
-			public void onMessage(String data, IOAcknowledge ack) {
-			}
-
-			@Override
-			public void onError(SocketIOException socketIOException) {
-				System.out.println("Connection error!");
-				// try {
-				// socket = new SocketIO("http://192.168.4.100:3000/");
-				// } catch (MalformedURLException e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// }
-				// socket.reconnect();
-			}
-
-			@Override
-			public void onDisconnect() {
-				// Toast.makeText(MainActivity.this, "DISCONNECTED",
-				// Toast.LENGTH_LONG).show();
-			}
-
-			@Override
-			public void onConnect() {
-			}
-		});
-		return thisSocket;
 	}
 
 	@Override
-	public void onClick(View v) {
+	public void onConnect() {
 		// TODO Auto-generated method stub
-
-		socket.emit("chat", messageEditText.getText().toString());
-		messageEditText.setText("");
+		
 	}
-	
-	private Runnable scrollList = new Runnable() {
-		
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-//			messageListAdapter.notifyDataSetChanged();
-			messageListView.setSelection(messageListView.getCount() - 1);
-			runOnUiThread(returnRes);
-		}
-	};
-	
-	private Runnable returnRes = new Runnable() {
-		
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			messageListAdapter.notifyDataSetChanged();
-		}
-	};
 
+	@Override
+	public void onDisconnect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onError(SocketIOException arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMessage(String arg0, IOAcknowledge arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMessage(JSONObject arg0, IOAcknowledge arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }
